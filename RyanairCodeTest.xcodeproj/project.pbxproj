@@ -12,6 +12,12 @@
 		8692033D252910C2000160B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8692033B252910C2000160B8 /* Main.storyboard */; };
 		8692033F252910C4000160B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8692033E252910C4000160B8 /* Assets.xcassets */; };
 		86920342252910C4000160B8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86920340252910C4000160B8 /* LaunchScreen.storyboard */; };
+		8692034A252A1950000160B8 /* Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86920349252A1950000160B8 /* Classes.swift */; };
+		8692034C252A1A90000160B8 /* SearchFlightVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8692034B252A1A90000160B8 /* SearchFlightVC.swift */; };
+		8692034E252A2396000160B8 /* SelectAirportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8692034D252A2396000160B8 /* SelectAirportVC.swift */; };
+		86920356252A2DF9000160B8 /* StationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86920354252A2DF9000160B8 /* StationCell.swift */; };
+		86920357252A2DF9000160B8 /* StationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86920355252A2DF9000160B8 /* StationCell.xib */; };
+		86920359252A3350000160B8 /* Stations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86920358252A3350000160B8 /* Stations.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +28,12 @@
 		8692033E252910C4000160B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		86920341252910C4000160B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		86920343252910C4000160B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		86920349252A1950000160B8 /* Classes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classes.swift; sourceTree = "<group>"; };
+		8692034B252A1A90000160B8 /* SearchFlightVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFlightVC.swift; sourceTree = "<group>"; };
+		8692034D252A2396000160B8 /* SelectAirportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAirportVC.swift; sourceTree = "<group>"; };
+		86920354252A2DF9000160B8 /* StationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationCell.swift; sourceTree = "<group>"; };
+		86920355252A2DF9000160B8 /* StationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StationCell.xib; sourceTree = "<group>"; };
+		86920358252A3350000160B8 /* Stations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,12 +68,26 @@
 			children = (
 				86920337252910C2000160B8 /* AppDelegate.swift */,
 				86920339252910C2000160B8 /* ViewController.swift */,
+				86920349252A1950000160B8 /* Classes.swift */,
 				8692033B252910C2000160B8 /* Main.storyboard */,
+				8692034D252A2396000160B8 /* SelectAirportVC.swift */,
+				8692034B252A1A90000160B8 /* SearchFlightVC.swift */,
+				8692034F252A2D3C000160B8 /* StationCell */,
 				8692033E252910C4000160B8 /* Assets.xcassets */,
 				86920340252910C4000160B8 /* LaunchScreen.storyboard */,
 				86920343252910C4000160B8 /* Info.plist */,
 			);
 			path = RyanairCodeTest;
+			sourceTree = "<group>";
+		};
+		8692034F252A2D3C000160B8 /* StationCell */ = {
+			isa = PBXGroup;
+			children = (
+				86920354252A2DF9000160B8 /* StationCell.swift */,
+				86920355252A2DF9000160B8 /* StationCell.xib */,
+				86920358252A3350000160B8 /* Stations.swift */,
+			);
+			path = StationCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -124,6 +150,7 @@
 			files = (
 				86920342252910C4000160B8 /* LaunchScreen.storyboard in Resources */,
 				8692033F252910C4000160B8 /* Assets.xcassets in Resources */,
+				86920357252A2DF9000160B8 /* StationCell.xib in Resources */,
 				8692033D252910C2000160B8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -135,8 +162,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8692034C252A1A90000160B8 /* SearchFlightVC.swift in Sources */,
 				8692033A252910C2000160B8 /* ViewController.swift in Sources */,
+				86920356252A2DF9000160B8 /* StationCell.swift in Sources */,
+				8692034E252A2396000160B8 /* SelectAirportVC.swift in Sources */,
 				86920338252910C2000160B8 /* AppDelegate.swift in Sources */,
+				86920359252A3350000160B8 /* Stations.swift in Sources */,
+				8692034A252A1950000160B8 /* Classes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
