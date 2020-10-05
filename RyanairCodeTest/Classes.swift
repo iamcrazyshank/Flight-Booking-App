@@ -7,42 +7,39 @@
 //
 
 import Foundation
+import UIKit
 
+var BaseURL = "https://tripstest.ryanair.com/static/stations.json"
 
-struct Loan: Codable {
+//Extention for UITextField for datePicker
+extension UITextField {
     
-    var name: String = ""
-    var country: String = ""
-    var use: String = ""
-    var amount: Int = 0
-    
-    enum CodingKeys: String, CodingKey {
-        case name
-        case country = "location"
-        case use
-        case amount = "loan_amount"
+    func setInputViewDatePicker(target: Any, selector: Selector) {
+        
+        let currentDate = Date()
+        var dateComponents = DateComponents()
+        let calendar = Calendar.init(identifier: .gregorian)
+        dateComponents.year = +1
+        let screenWidth = UIScreen.main.bounds.width
+        let datePicker = UIDatePicker(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 213))
+        datePicker.datePickerMode = .date
+        self.inputView = datePicker
+        //Setting minimum date to Current date
+        datePicker.minimumDate = currentDate
+        //Setting Maximum date to exact one year from today
+        datePicker.maximumDate = calendar.date(byAdding: dateComponents, to: currentDate)
+        let toolBar = UIToolbar(frame: CGRect(x: 0.0, y: 0.0, width: screenWidth, height: 42.0))
+        let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let cancel = UIBarButtonItem(title: "Cancel", style: .plain, target: nil, action: #selector(Cancel))
+        let barButton = UIBarButtonItem(title: "Done", style: .plain, target: target, action: selector)
+        toolBar.setItems([cancel, flexible, barButton], animated: false)
+        self.inputAccessoryView = toolBar
     }
     
-    enum LocationKeys: String, CodingKey {
-        case country
+    @objc func Cancel() {
+        self.resignFirstResponder()
     }
     
-    init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        
-        name = try values.decode(String.self, forKey: .name)
-        
-        let location = try values.nestedContainer(keyedBy: LocationKeys.self, forKey: .country)
-        country = try location.decode(String.self, forKey: .country)
-        
-        use = try values.decode(String.self, forKey: .use)
-        amount = try values.decode(Int.self, forKey: .amount)
-        
-    }
-}
-
-struct LoanDataStore: Codable {
-    var loans: [Loan]
 }
 
 
