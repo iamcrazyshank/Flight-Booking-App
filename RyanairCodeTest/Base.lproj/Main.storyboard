@@ -37,6 +37,9 @@
                                                 <rect key="frame" x="20" y="19" width="370" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Source"/>
+                                                <connections>
+                                                    <segue destination="Ur6-oE-XJU" kind="show" id="64n-Ob-4SV"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XiF-mO-YXd">
                                                 <rect key="frame" x="8" y="65" width="382" height="30"/>
@@ -64,7 +67,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="datepic" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wly-En-nHV">
+                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="datepic" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wly-En-nHV" userLabel="datepicker">
                                                 <rect key="frame" x="151" y="125" width="97" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <nil key="textColor"/>
@@ -112,6 +115,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="flightDatePicker" destination="Wly-En-nHV" id="kEK-ky-LQa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -182,6 +188,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lQd-mM-DNQ"/>
                     </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="1RK-K1-LKP" id="oT5-xx-8eP"/>
+                        <outlet property="searchBar" destination="WQP-u7-aT8" id="pMg-oL-Dpd"/>
+                        <outlet property="searchStationTableView" destination="iob-bA-Pg0" id="VHx-q4-jTe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8di-HA-3bd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -11,14 +11,23 @@ import UIKit
 class SearchFlightVC: UIViewController {
     
 
-
+    @IBOutlet weak var flightDatePicker: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.flightDatePicker.setInputViewDatePicker(target: self, selector: #selector(DoneButton))
         // Do any additional setup after loading the view.
     }
     
- 
+    @objc func DoneButton() {
+        if let datePicker = self.flightDatePicker.inputView as? UIDatePicker {
+            let dateformatter = DateFormatter()
+            dateformatter.dateStyle = .medium
+            self.flightDatePicker.text = dateformatter.string(from: datePicker.date)
+        }
+        self.flightDatePicker.resignFirstResponder() 
+    }
+    func UserPlaceSearch() {}
     /*
     // MARK: - Navigation
 
