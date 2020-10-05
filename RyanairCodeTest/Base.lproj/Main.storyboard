@@ -116,7 +116,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="adultCountTextField" destination="NTQ-3C-1xG" id="LzM-Hh-FeW"/>
+                        <outlet property="childCountTextField" destination="5m9-nF-c6P" id="cgo-fv-2pm"/>
                         <outlet property="flightDatePicker" destination="Wly-En-nHV" id="kEK-ky-LQa"/>
+                        <outlet property="teenCountTextField" destination="VMC-nB-FCm" id="cRU-8Z-02H"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
