@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct Stations: Codable {
+struct stations: Codable {
     
-    var code: String = ""
-    var country: String = ""
-    var imageUrl: String = ""
+    var code: String?
+    var country: String?
+    var imageUrl: URL?
     
     
     enum CodingKeys: String, CodingKey {
@@ -22,15 +22,9 @@ struct Stations: Codable {
     }
    
     
-    init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        code = try values.decode(String.self, forKey: .code)
-        country = try values.decode(String.self, forKey: .country)
-        imageUrl = try values.decode(String.self, forKey: .imageUrl)
-        
-    }
 }
 
-struct StationsDataStore: Codable {
-    var stations: [Stations]
+struct Stations: Codable {
+    var stations: [stations]
 }
+
