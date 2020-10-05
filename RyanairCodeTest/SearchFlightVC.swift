@@ -8,9 +8,12 @@
 
 import UIKit
 
-class SearchFlightVC: UIViewController, UITextViewDelegate {
+class SearchFlightVC: UIViewController,SearchDelegate {
+  
+    @IBOutlet weak var sourceStationButton: UIButton!
     
-
+    @IBOutlet weak var destinationStationButton: UIButton!
+    
     @IBOutlet weak var flightDatePicker: UITextField!
     @IBOutlet weak var adultCountTextField: UITextField!
     @IBOutlet weak var teenCountTextField: UITextField!
@@ -23,10 +26,6 @@ class SearchFlightVC: UIViewController, UITextViewDelegate {
     let picker1 = UIPickerView()
     let picker2 = UIPickerView()
     let picker3 = UIPickerView()
-    
-    var adtFlag = true
-    var childFlag = false
-    var teenFlag = false
     var dateOut = ""
     
     override func viewDidLoad() {
@@ -63,6 +62,36 @@ class SearchFlightVC: UIViewController, UITextViewDelegate {
             print(self.dateOut)
         }
         self.flightDatePicker.resignFirstResponder() 
+    }
+    
+    
+    func StationSearch(Code: String, CountryName: String) {
+        DispatchQueue.main.async {
+            self.sourceStationButton.setTitle(Code + " " + CountryName , for: .normal)
+        }
+    }
+    
+    @IBAction func sourceStationButtonAction(_ sender: Any) {
+        DispatchQueue.main.async {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let showAirportVC = storyboard.instantiateViewController(withIdentifier: "SelectAirportVC") as! SelectAirportVC
+            showAirportVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+            showAirportVC.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+            showAirportVC.Searchdelegate = self
+            self.present(showAirportVC, animated: false, completion: nil)
+        }
+    }
+    
+    @IBAction func searchFlightsButtonAction(_ sender: Any) {
+        
+        DispatchQueue.main.async {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let showFlightDetailsVC = storyboard.instantiateViewController(withIdentifier: "FlightDetailsVC") as! FlightDetailsVC
+            showFlightDetailsVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+            showFlightDetailsVC.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+            self.present(showFlightDetailsVC, animated: true, completion: nil)
+        }
+
     }
     
 }

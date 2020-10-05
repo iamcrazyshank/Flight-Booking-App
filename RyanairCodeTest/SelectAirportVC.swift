@@ -11,7 +11,7 @@ import CoreLocation
 
 protocol SearchDelegate : class {
     
-    func UserPlaceSearch()
+    func StationSearch(Code :String, CountryName:String)
 }
 
 
@@ -113,6 +113,20 @@ class SelectAirportVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         return cell
     }
     
-  
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if searchBar.text != "" {
+            self.Searchdelegate?.StationSearch(Code :self.filteredData[indexPath.row].code ?? "",CountryName: self.filteredData[indexPath.row].country ?? "")
+        }else{
+            self.Searchdelegate?.StationSearch(Code :self.StationList[indexPath.row].code ?? "",CountryName: self.StationList[indexPath.row].country ?? "")
+            
+        }
+       
+        self.dismiss(animated: true, completion: nil)
+        
+    }
+    
+    @IBAction func cancelButtonPressed(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
 }
