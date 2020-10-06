@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 var BaseURL = "https://tripstest.ryanair.com/static/stations.json"
+var FlightAvailURL = "https://tripstest.ryanair.com/api/v4/Availability"
 
 //Extention for UITextField for datePicker
 extension UITextField {
