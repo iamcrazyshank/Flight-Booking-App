@@ -83,7 +83,7 @@
 				86CD2BD3252E236300C826E8 /* Flight Details Page */,
 				8692034B252A1A90000160B8 /* SearchFlightVC.swift */,
 				86CD2BD4252E239500C826E8 /* Airport Selection Page */,
-				8692034F252A2D3C000160B8 /* StationCell */,
+				8692034F252A2D3C000160B8 /* Stations Table View Cell */,
 				8692033E252910C4000160B8 /* Assets.xcassets */,
 				86920340252910C4000160B8 /* LaunchScreen.storyboard */,
 				86920343252910C4000160B8 /* Info.plist */,
@@ -91,13 +91,13 @@
 			path = RyanairCodeTest;
 			sourceTree = "<group>";
 		};
-		8692034F252A2D3C000160B8 /* StationCell */ = {
+		8692034F252A2D3C000160B8 /* Stations Table View Cell */ = {
 			isa = PBXGroup;
 			children = (
 				86920354252A2DF9000160B8 /* StationCell.swift */,
 				86920355252A2DF9000160B8 /* StationCell.xib */,
 			);
-			path = StationCell;
+			path = "Stations Table View Cell";
 			sourceTree = "<group>";
 		};
 		86CD2BD0252CF60D00C826E8 /* NetworkCalls */ = {
