@@ -67,27 +67,27 @@ class SelectAirportVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         DispatchQueue.main.async {
             self.searchStationTableView.reloadData()
         }
-        print(filteredData)
-        
     }
     
     func getStationList() {
         
-        guard let stationUrl = URL(string: BaseURL) else { return }
-        URLSession.shared.dataTask(with: stationUrl) { (data, response
-            , error) in
-            guard let data = data else { return }
-            do {
-                let decoder = JSONDecoder()
-                let stationJSON = try decoder.decode(Stations.self, from: data)
-                self.StationList = stationJSON.stations
+        
+        NetworkCallClass.dataRequest(with: BaseURL, objectType: Stations.self, params: [:]) { (result: Result) in
+            switch result {
+            case .success(let object):
+                self.StationList = object.stations
                 DispatchQueue.main.async {
-                self.searchStationTableView.reloadData()
+                    self.searchStationTableView.reloadData()
                 }
-            } catch let err {
-                print("Err", err)
+            case .failure(let error):
+                
+                Utilities.showAlertControllerWith(title: "Error", message: "", onVc: self, buttons: ["OK"]) { (succes, index) in
+                    if index == 0 {
+                        
+                    }
+                }
             }
-            }.resume()
+        }
         
         
     }
@@ -120,7 +120,6 @@ class SelectAirportVC: UIViewController, UITableViewDelegate, UITableViewDataSou
             self.Searchdelegate?.StationSearch(Code :self.StationList[indexPath.row].code ?? "",CountryName: self.StationList[indexPath.row].country ?? "")
             
         }
-       
         self.dismiss(animated: true, completion: nil)
         
     }

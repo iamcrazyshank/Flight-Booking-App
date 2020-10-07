@@ -12,6 +12,24 @@ import UIKit
 var BaseURL = "https://tripstest.ryanair.com/static/stations.json"
 var FlightAvailURL = "https://tripstest.ryanair.com/api/v4/Availability"
 
+class Utilities {
+    
+    class func showAlertControllerWith(title:String, message:String?, onVc:UIViewController , style: UIAlertController.Style = .alert, buttons:[String], completion:((Bool,Int)->Void)?) -> Void {
+        
+        let alertController = UIAlertController.init(title: title, message: message, preferredStyle: style)
+        for (index,title) in buttons.enumerated() {
+            let action = UIAlertAction.init(title: title, style: UIAlertAction.Style.default) { (action) in
+                completion?(true,index)
+            }
+            alertController.addAction(action)
+        }
+        
+        onVc.present(alertController, animated: true, completion: nil)
+    }
+    
+}
+
+
 //Extention for UITextField for datePicker
 extension UITextField {
     

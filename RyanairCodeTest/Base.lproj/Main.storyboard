@@ -41,7 +41,7 @@
                                 <rect key="frame" x="0.0" y="89" width="414" height="773"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="llU-KR-yjd">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="flightcell" id="llU-KR-yjd">
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="llU-KR-yjd" id="LyG-6T-emi">
@@ -65,6 +65,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EfU-KL-Yef"/>
                     </view>
+                    <connections>
+                        <outlet property="flightDetailsTableView" destination="p76-ov-Mvj" id="KDg-fG-1Yb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pYA-AH-pUS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -80,7 +83,18 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q6e-I3-TMe" userLabel="TitleCard">
                                 <rect key="frame" x="0.0" y="44" width="414" height="54"/>
-                                <color key="backgroundColor" red="0.79095626220000004" green="1" blue="0.9187857076" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ryanair_logo" translatesAutoresizingMaskIntoConstraints="NO" id="xKf-pH-Oec">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="54"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="xKf-pH-Oec" firstAttribute="centerX" secondItem="Q6e-I3-TMe" secondAttribute="centerX" id="1Fq-fv-rsW"/>
+                                    <constraint firstItem="xKf-pH-Oec" firstAttribute="centerY" secondItem="Q6e-I3-TMe" secondAttribute="centerY" id="RfN-dT-cxv"/>
+                                    <constraint firstItem="xKf-pH-Oec" firstAttribute="height" secondItem="Q6e-I3-TMe" secondAttribute="height" id="TeY-R4-Y79"/>
+                                    <constraint firstItem="xKf-pH-Oec" firstAttribute="width" secondItem="Q6e-I3-TMe" secondAttribute="width" id="ZrG-Cx-pHT"/>
+                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xOW-WV-Kn6" userLabel="SearchView">
                                 <rect key="frame" x="0.0" y="98" width="414" height="358"/>
@@ -100,29 +114,32 @@
                                                 <rect key="frame" x="8" y="65" width="382" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Dest"/>
+                                                <connections>
+                                                    <action selector="destStationButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NPV-bU-8nL"/>
+                                                </connections>
                                             </button>
-                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="adult" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NTQ-3C-1xG">
+                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" placeholder="Adult" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NTQ-3C-1xG">
                                                 <rect key="frame" x="20" y="196" width="97" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="child" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5m9-nF-c6P">
+                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" placeholder="Child" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5m9-nF-c6P">
                                                 <rect key="frame" x="276" y="194" width="97" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="teen" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VMC-nB-FCm">
+                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" placeholder="Teen" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VMC-nB-FCm">
                                                 <rect key="frame" x="151" y="193" width="97" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="datepic" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wly-En-nHV" userLabel="datepicker">
+                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Date Picker" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wly-En-nHV" userLabel="datepicker">
                                                 <rect key="frame" x="151" y="125" width="97" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <nil key="textColor"/>
@@ -265,4 +282,7 @@
             <point key="canvasLocation" x="745" y="414"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ryanair_logo" width="627" height="151"/>
+    </resources>
 </document>
