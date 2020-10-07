@@ -12,6 +12,7 @@ import UIKit
 var BaseURL = "https://tripstest.ryanair.com/static/stations.json"
 var FlightAvailURL = "https://tripstest.ryanair.com/api/v4/Availability"
 
+//Utilities Class
 class Utilities {
     
     class func showAlertControllerWith(title:String, message:String?, onVc:UIViewController , style: UIAlertController.Style = .alert, buttons:[String], completion:((Bool,Int)->Void)?) -> Void {
@@ -34,7 +35,6 @@ class Utilities {
 extension UITextField {
     
     func setInputViewDatePicker(target: Any, selector: Selector) {
-        
         let currentDate = Date()
         var dateComponents = DateComponents()
         let calendar = Calendar.init(identifier: .gregorian)

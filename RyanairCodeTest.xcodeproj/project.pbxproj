@@ -75,13 +75,13 @@
 			isa = PBXGroup;
 			children = (
 				86CD2BD0252CF60D00C826E8 /* NetworkCalls */,
-				86E81529252BBF36000EC145 /* FLightCell */,
+				86E81529252BBF36000EC145 /* FlightCell */,
 				86920337252910C2000160B8 /* AppDelegate.swift */,
 				86920349252A1950000160B8 /* Utilities.swift */,
 				8692033B252910C2000160B8 /* Main.storyboard */,
-				8692035C252B7156000160B8 /* FlightDetailsVC.swift */,
+				86CD2BD3252E236300C826E8 /* Flight Details Page */,
 				8692034B252A1A90000160B8 /* SearchFlightVC.swift */,
-				8692034D252A2396000160B8 /* SelectAirportVC.swift */,
+				86CD2BD4252E239500C826E8 /* Airport Selection Page */,
 				8692034F252A2D3C000160B8 /* StationCell */,
 				8692033E252910C4000160B8 /* Assets.xcassets */,
 				86920340252910C4000160B8 /* LaunchScreen.storyboard */,
@@ -108,14 +108,30 @@
 			path = NetworkCalls;
 			sourceTree = "<group>";
 		};
-		86E81529252BBF36000EC145 /* FLightCell */ = {
+		86CD2BD3252E236300C826E8 /* Flight Details Page */ = {
+			isa = PBXGroup;
+			children = (
+				8692035C252B7156000160B8 /* FlightDetailsVC.swift */,
+			);
+			path = "Flight Details Page";
+			sourceTree = "<group>";
+		};
+		86CD2BD4252E239500C826E8 /* Airport Selection Page */ = {
+			isa = PBXGroup;
+			children = (
+				8692034D252A2396000160B8 /* SelectAirportVC.swift */,
+			);
+			path = "Airport Selection Page";
+			sourceTree = "<group>";
+		};
+		86E81529252BBF36000EC145 /* FlightCell */ = {
 			isa = PBXGroup;
 			children = (
 				86E8152C252BBF6B000EC145 /* FlightCell.swift */,
 				86E8152D252BBF6B000EC145 /* FlightCell.xib */,
 				86E81530252BC575000EC145 /* Flight.swift */,
 			);
-			path = FLightCell;
+			path = FlightCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
