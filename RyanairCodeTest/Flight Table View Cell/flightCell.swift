@@ -1,5 +1,5 @@
 //
-//  FlightCell.swift
+//  flightCell.swift
 //  RyanairCodeTest
 //
 //  Created by Shashank Chandran on 10/5/20.
@@ -7,10 +7,8 @@
 //
 
 import UIKit
-//Date
-//Flight Number
-//Regular Fare
-class FlightCell: UITableViewCell {
+
+class flightCell: UITableViewCell {
 
     @IBOutlet weak var fareLabel: UILabel!
     @IBOutlet weak var flightNumLabel: UILabel!
