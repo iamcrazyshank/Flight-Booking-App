@@ -10,12 +10,12 @@ import UIKit
 
 class FlightDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
    
-    
-    
     let FlightCellID = "flightcell"
-    let FLightCellNib = "FlightCell"
+    let FLightCellNib = "flightCell"
     
     var QueryParams = [String : String]()
+    
+    var TripList = [Trip]()
     
     @IBOutlet weak var flightDetailsTableView: UITableView!
     
@@ -41,14 +41,16 @@ class FlightDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         NetworkCallClass.dataRequest(with: FlightAvailURL, objectType: FlightDetails.self, params: QueryParams) { (result: Result) in
             switch result {
             case .success(let object):
-                print(object)
+                self.TripList = object.trips
             case .failure(let error):
+                 DispatchQueue.main.async {
                 Utilities.showAlertControllerWith(title: "Error", message: error.localizedDescription, onVc: self, buttons: ["Cancel","Retry"]) { (succes, index) in
                     if index == 0 {
                         self.dismiss(animated: true, completion: nil)
                     }else if index == 1{
                         self.getApiCall()
                     }
+                 }
                 }
             }
         }
@@ -60,7 +62,7 @@ class FlightDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: FlightCellID, for: indexPath) as! FlightCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: FlightCellID, for: indexPath) as! flightCell
         cell.selectionStyle = .none
         return cell
     }

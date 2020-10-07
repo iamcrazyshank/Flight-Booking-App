@@ -16,7 +16,6 @@ class StationCell: UITableViewCell {
     }
     @IBOutlet weak var Scode: UILabel!
     @IBOutlet weak var Sname: UILabel!
-    @IBOutlet weak var Simage: UIImageView!
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

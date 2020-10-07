@@ -70,8 +70,6 @@ class SelectAirportVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func getStationList() {
-        
-        
         NetworkCallClass.dataRequest(with: BaseURL, objectType: Stations.self, params: [:]) { (result: Result) in
             switch result {
             case .success(let object):
@@ -81,7 +79,7 @@ class SelectAirportVC: UIViewController, UITableViewDelegate, UITableViewDataSou
                 }
             case .failure(let error):
                 
-                Utilities.showAlertControllerWith(title: "Error", message: "", onVc: self, buttons: ["OK"]) { (succes, index) in
+                Utilities.showAlertControllerWith(title: "Error", message: error.localizedDescription, onVc: self, buttons: ["OK"]) { (succes, index) in
                     if index == 0 {
                         
                     }
@@ -128,4 +126,18 @@ class SelectAirportVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         self.dismiss(animated: true, completion: nil)
     }
     
+}
+
+extension UIImageView {
+    func load(url: URL) {
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self?.image = image
+                    }
+                }
+            }
+        }
+    }
 }

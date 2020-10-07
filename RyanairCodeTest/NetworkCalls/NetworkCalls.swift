@@ -29,7 +29,7 @@ class NetworkCallClass {
   class func dataRequest<T: Decodable>(with url: String, objectType: T.Type,params: Dictionary<String, String>, completion: @escaping (Result<T>) -> Void) {
         
         let QueryURL = String(queryString(url,params: params)!)
-        
+        print(QueryURL)
         //create the url with NSURL with string and Session Object
         let dataURL = URL(string: QueryURL)!
         let session = URLSession.shared
@@ -53,6 +53,7 @@ class NetworkCallClass {
                 let decodedObject = try JSONDecoder().decode(objectType.self, from: data)
                 completion(Result.success(decodedObject))
             } catch let error {
+                print(error)
                 completion(Result.failure(NetworkCallsError.jsonParsingError(error as! DecodingError)))
             }
         })
@@ -68,6 +69,7 @@ class NetworkCallClass {
         
         return components?.url?.absoluteString
     }
+    
 
 }
 

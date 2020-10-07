@@ -12,13 +12,11 @@ struct stations: Codable {
     
     var code: String?
     var country: String?
-    var imageUrl: URL?
     
     
     enum CodingKeys: String, CodingKey {
-        case code = "countryCode"
-        case country = "countryName"
-        case imageUrl = "tripCardImageUrl"
+        case code = "code"
+        case country = "name"
     }
    
     

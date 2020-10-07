@@ -19,17 +19,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8O4-nb-3dk">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z6f-RU-G11" userLabel="Scode">
-                        <rect key="frame" x="16" y="4.5" width="128" height="34.5"/>
+                        <rect key="frame" x="24" y="4.5" width="112" height="34.5"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Qt-wq-dIz" userLabel="Sname">
-                        <rect key="frame" x="144" y="6.5" width="176" height="30.5"/>
+                        <rect key="frame" x="136" y="6.5" width="184" height="30.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -37,23 +34,18 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="5Qt-wq-dIz" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="8Tq-PY-2IC"/>
-                    <constraint firstItem="8O4-nb-3dk" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" id="KwF-Rn-HeG"/>
-                    <constraint firstItem="8O4-nb-3dk" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="PS5-pi-lXG"/>
                     <constraint firstItem="5Qt-wq-dIz" firstAttribute="leading" secondItem="Z6f-RU-G11" secondAttribute="trailing" id="RRX-gx-KRh"/>
                     <constraint firstItem="5Qt-wq-dIz" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.7" id="T3b-SY-2Sl"/>
-                    <constraint firstItem="8O4-nb-3dk" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="WUM-mT-MVz"/>
                     <constraint firstItem="Z6f-RU-G11" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Wmj-OQ-DsN"/>
                     <constraint firstItem="Z6f-RU-G11" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" multiplier="0.5" id="ctW-RY-mLR"/>
                     <constraint firstItem="Z6f-RU-G11" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.8" id="i9J-Pv-fUa"/>
-                    <constraint firstItem="Z6f-RU-G11" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.4" id="pV4-vK-ZVy"/>
-                    <constraint firstItem="8O4-nb-3dk" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="sOa-qn-tgU"/>
+                    <constraint firstItem="Z6f-RU-G11" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.35" id="pV4-vK-ZVy"/>
                     <constraint firstAttribute="trailing" secondItem="5Qt-wq-dIz" secondAttribute="trailing" id="ynt-9r-46Y"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="Scode" destination="Z6f-RU-G11" id="ySJ-Yd-vUf"/>
-                <outlet property="Simage" destination="8O4-nb-3dk" id="ky3-73-7Sz"/>
                 <outlet property="Sname" destination="5Qt-wq-dIz" id="7Hc-Dc-WcZ"/>
             </connections>
         </tableViewCell>
