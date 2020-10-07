@@ -18,9 +18,9 @@
 		86920357252A2DF9000160B8 /* StationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86920355252A2DF9000160B8 /* StationCell.xib */; };
 		86920359252A3350000160B8 /* Stations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86920358252A3350000160B8 /* Stations.swift */; };
 		8692035D252B7156000160B8 /* FlightDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8692035C252B7156000160B8 /* FlightDetailsVC.swift */; };
-		86E8152E252BBF6B000EC145 /* FlightCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E8152C252BBF6B000EC145 /* FlightCell.swift */; };
-		86E8152F252BBF6B000EC145 /* FlightCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86E8152D252BBF6B000EC145 /* FlightCell.xib */; };
-		86E81531252BC575000EC145 /* Flight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E81530252BC575000EC145 /* Flight.swift */; };
+		86CD2BD8252E28B700C826E8 /* FlightClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CD2BD7252E28B700C826E8 /* FlightClass.swift */; };
+		86CD2BDB252E291100C826E8 /* flightCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CD2BD9252E291100C826E8 /* flightCell.swift */; };
+		86CD2BDC252E291100C826E8 /* flightCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86CD2BDA252E291100C826E8 /* flightCell.xib */; };
 		86E81533252CAFA1000EC145 /* NetworkCalls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E81532252CAFA1000EC145 /* NetworkCalls.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,9 +38,9 @@
 		86920355252A2DF9000160B8 /* StationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StationCell.xib; sourceTree = "<group>"; };
 		86920358252A3350000160B8 /* Stations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stations.swift; sourceTree = "<group>"; };
 		8692035C252B7156000160B8 /* FlightDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightDetailsVC.swift; sourceTree = "<group>"; };
-		86E8152C252BBF6B000EC145 /* FlightCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightCell.swift; sourceTree = "<group>"; };
-		86E8152D252BBF6B000EC145 /* FlightCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlightCell.xib; sourceTree = "<group>"; };
-		86E81530252BC575000EC145 /* Flight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flight.swift; sourceTree = "<group>"; };
+		86CD2BD7252E28B700C826E8 /* FlightClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightClass.swift; sourceTree = "<group>"; };
+		86CD2BD9252E291100C826E8 /* flightCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = flightCell.swift; sourceTree = "<group>"; };
+		86CD2BDA252E291100C826E8 /* flightCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = flightCell.xib; sourceTree = "<group>"; };
 		86E81532252CAFA1000EC145 /* NetworkCalls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCalls.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -74,8 +74,8 @@
 		86920336252910C2000160B8 /* RyanairCodeTest */ = {
 			isa = PBXGroup;
 			children = (
+				86CD2BD6252E285200C826E8 /* Flight Table View Cell */,
 				86CD2BD0252CF60D00C826E8 /* NetworkCalls */,
-				86E81529252BBF36000EC145 /* FlightCell */,
 				86920337252910C2000160B8 /* AppDelegate.swift */,
 				86920349252A1950000160B8 /* Utilities.swift */,
 				8692033B252910C2000160B8 /* Main.storyboard */,
@@ -124,14 +124,14 @@
 			path = "Airport Selection Page";
 			sourceTree = "<group>";
 		};
-		86E81529252BBF36000EC145 /* FlightCell */ = {
+		86CD2BD6252E285200C826E8 /* Flight Table View Cell */ = {
 			isa = PBXGroup;
 			children = (
-				86E8152C252BBF6B000EC145 /* FlightCell.swift */,
-				86E8152D252BBF6B000EC145 /* FlightCell.xib */,
-				86E81530252BC575000EC145 /* Flight.swift */,
+				86CD2BD7252E28B700C826E8 /* FlightClass.swift */,
+				86CD2BD9252E291100C826E8 /* flightCell.swift */,
+				86CD2BDA252E291100C826E8 /* flightCell.xib */,
 			);
-			path = FlightCell;
+			path = "Flight Table View Cell";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,9 +193,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				86920342252910C4000160B8 /* LaunchScreen.storyboard in Resources */,
+				86CD2BDC252E291100C826E8 /* flightCell.xib in Resources */,
 				8692033F252910C4000160B8 /* Assets.xcassets in Resources */,
 				86920357252A2DF9000160B8 /* StationCell.xib in Resources */,
-				86E8152F252BBF6B000EC145 /* FlightCell.xib in Resources */,
 				8692033D252910C2000160B8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -207,11 +207,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				86E81531252BC575000EC145 /* Flight.swift in Sources */,
 				8692034C252A1A90000160B8 /* SearchFlightVC.swift in Sources */,
-				86E8152E252BBF6B000EC145 /* FlightCell.swift in Sources */,
 				86920356252A2DF9000160B8 /* StationCell.swift in Sources */,
 				86E81533252CAFA1000EC145 /* NetworkCalls.swift in Sources */,
+				86CD2BD8252E28B700C826E8 /* FlightClass.swift in Sources */,
+				86CD2BDB252E291100C826E8 /* flightCell.swift in Sources */,
 				8692034E252A2396000160B8 /* SelectAirportVC.swift in Sources */,
 				86920338252910C2000160B8 /* AppDelegate.swift in Sources */,
 				86920359252A3350000160B8 /* Stations.swift in Sources */,
