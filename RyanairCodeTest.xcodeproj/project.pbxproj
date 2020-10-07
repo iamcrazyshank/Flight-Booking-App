@@ -74,6 +74,7 @@
 		86920336252910C2000160B8 /* RyanairCodeTest */ = {
 			isa = PBXGroup;
 			children = (
+				86CD2BDD252E2A0500C826E8 /* Classes & Structures */,
 				86CD2BD6252E285200C826E8 /* Flight Table View Cell */,
 				86CD2BD0252CF60D00C826E8 /* NetworkCalls */,
 				86920337252910C2000160B8 /* AppDelegate.swift */,
@@ -95,7 +96,6 @@
 			children = (
 				86920354252A2DF9000160B8 /* StationCell.swift */,
 				86920355252A2DF9000160B8 /* StationCell.xib */,
-				86920358252A3350000160B8 /* Stations.swift */,
 			);
 			path = StationCell;
 			sourceTree = "<group>";
@@ -127,11 +127,19 @@
 		86CD2BD6252E285200C826E8 /* Flight Table View Cell */ = {
 			isa = PBXGroup;
 			children = (
-				86CD2BD7252E28B700C826E8 /* FlightClass.swift */,
 				86CD2BD9252E291100C826E8 /* flightCell.swift */,
 				86CD2BDA252E291100C826E8 /* flightCell.xib */,
 			);
 			path = "Flight Table View Cell";
+			sourceTree = "<group>";
+		};
+		86CD2BDD252E2A0500C826E8 /* Classes & Structures */ = {
+			isa = PBXGroup;
+			children = (
+				86920358252A3350000160B8 /* Stations.swift */,
+				86CD2BD7252E28B700C826E8 /* FlightClass.swift */,
+			);
+			path = "Classes & Structures";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
