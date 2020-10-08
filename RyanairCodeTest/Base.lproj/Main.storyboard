@@ -90,7 +90,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pYA-AH-pUS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-620.28985507246387" y="413.83928571428572"/>
+            <point key="canvasLocation" x="-881" y="-91"/>
         </scene>
         <!--Search FlightVC-->
         <scene sceneID="tne-QT-ifu">
@@ -486,7 +486,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8di-HA-3bd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="745" y="414"/>
+            <point key="canvasLocation" x="983" y="-91"/>
         </scene>
     </scenes>
     <resources>
