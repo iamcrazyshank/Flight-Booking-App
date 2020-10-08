@@ -29,7 +29,6 @@ class NetworkCallClass {
   class func dataRequest<T: Decodable>(with url: String, objectType: T.Type,params: Dictionary<String, String>, completion: @escaping (Result<T>) -> Void) {
         
         let QueryURL = String(queryString(url,params: params)!)
-        print(QueryURL)
         //create the url with NSURL with string and Session Object
         let dataURL = URL(string: QueryURL)!
         let session = URLSession.shared
