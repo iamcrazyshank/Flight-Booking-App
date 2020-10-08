@@ -19,6 +19,7 @@ class SelectAirportVC: UIViewController, UITableViewDelegate, UITableViewDataSou
 
     @IBOutlet weak var cancelButton: UIButton!
     
+    //Xib Nibs
     let SearchCellID = "stationcell"
     let SearchCellNib = "StationCell"
     @IBOutlet weak var searchBar: UISearchBar!
@@ -26,35 +27,47 @@ class SelectAirportVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     var Searchdelegate: SearchDelegate? = nil
     
     @IBOutlet weak var searchStationTableView: UITableView!
-    
+   
+    //Object to store server response
     var StationList = [stations]()
     var filteredData = [stations]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getStationList()
-        self.searchStationTableView.register(UINib.init(nibName: SearchCellNib, bundle: nil), forCellReuseIdentifier: SearchCellID)
-        self.searchStationTableView.dataSource = self
-        self.searchStationTableView.delegate = self
+       
         self.searchBar.delegate = self
-        self.searchStationTableView.rowHeight = UITableView.automaticDimension
-        self.searchStationTableView.separatorColor = #colorLiteral(red: 0.3412463963, green: 0.1215836629, blue: 0.6041584611, alpha: 1)
-        self.searchBar.tintColor = #colorLiteral(red: 0.3412463963, green: 0.1215836629, blue: 0.6041584611, alpha: 1)
-
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        getStationList()
+        self.searchStationTableView.register(UINib.init(nibName: SearchCellNib, bundle: nil), forCellReuseIdentifier: SearchCellID)
+        self.searchStationTableView.rowHeight = UITableView.automaticDimension
+        self.searchStationTableView.reloadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.searchStationTableView.delegate = self
+        self.searchStationTableView.dataSource = self
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.StationList.removeAll()
+        self.filteredData.removeAll()
+    }
+    
+    
+    
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        //reload() method call after a delay of 0.75 secs
         NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(self.reload(_:)), object: searchBar)
         perform(#selector(self.reload(_:)), with: searchBar, afterDelay: 0.75)
-        // self.seachContentTableView.reloadData()
         
     }
     
     @objc func reload(_ searchBar: UISearchBar) {
         guard let query = searchBar.text, query.trimmingCharacters(in: .whitespaces) != "" else {
-            print("nothing to search")
             return
         }
        searchResultsAPI(query: query)
@@ -62,7 +75,7 @@ class SelectAirportVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func searchResultsAPI(query : String) {
-        print(query)
+        //Filter the array with only containing searched query
         filteredData = StationList.filter({($0.country?.contains(query))! || ($0.code?.contains(query))!})
         DispatchQueue.main.async {
             self.searchStationTableView.reloadData()
@@ -78,7 +91,7 @@ class SelectAirportVC: UIViewController, UITableViewDelegate, UITableViewDataSou
                     self.searchStationTableView.reloadData()
                 }
             case .failure(let error):
-                
+                //error alert
                 Utilities.showAlertControllerWith(title: "Error", message: error.localizedDescription, onVc: self, buttons: ["OK"]) { (succes, index) in
                     if index == 0 {
                         
@@ -128,16 +141,3 @@ class SelectAirportVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     
 }
 
-extension UIImageView {
-    func load(url: URL) {
-        DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url) {
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self?.image = image
-                    }
-                }
-            }
-        }
-    }
-}

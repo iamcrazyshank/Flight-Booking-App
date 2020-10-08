@@ -15,6 +15,7 @@ var FlightAvailURL = "https://tripstest.ryanair.com/api/v4/Availability"
 //Utilities Class
 class Utilities {
     
+    //class method for custom alert with message
     class func showAlertControllerWith(title:String, message:String?, onVc:UIViewController , style: UIAlertController.Style = .alert, buttons:[String], completion:((Bool,Int)->Void)?) -> Void {
         
         let alertController = UIAlertController.init(title: title, message: message, preferredStyle: style)
@@ -28,6 +29,7 @@ class Utilities {
         onVc.present(alertController, animated: true, completion: nil)
     }
     
+    //Class method to convert UTC date string to readable date format
     class func convertReadableDateString(_ dateString: String) -> String? {
         
         let serverDateFormatter = DateFormatter()
@@ -91,7 +93,7 @@ extension UIView{
             let activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
             activityIndicator.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
             activityIndicator.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
-            activityIndicator.color = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+            activityIndicator.color = #colorLiteral(red: 0.02745098039, green: 0.2078431373, blue: 0.5647058824, alpha: 1)
             activityIndicator.startAnimating()
             blurEffectView.contentView.addSubview(activityIndicator)
             activityIndicator.center = blurEffectView.contentView.center

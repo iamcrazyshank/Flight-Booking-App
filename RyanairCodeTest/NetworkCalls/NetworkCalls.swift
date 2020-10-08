@@ -6,7 +6,7 @@
 //  Copyright © 2020 Shashank Chandran. All rights reserved.
 //
 
-//NetworkCall Class to perform Network Calls
+//'NetworkCall' Class to perform Network Calls
 
 import Foundation
 

@@ -8,6 +8,7 @@
 
 import Foundation
 
+//Codable Structure 'stations' to parse airport details
 struct stations: Codable {
     
     var code: String?

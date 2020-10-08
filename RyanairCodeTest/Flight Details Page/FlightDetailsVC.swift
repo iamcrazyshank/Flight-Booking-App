@@ -10,13 +10,16 @@ import UIKit
 
 class FlightDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
    
+    //Nib Declaration
     let FlightCellID = "flightcell"
     let FLightCellNib = "flightCell"
     
+    //Query parameter dictionary
     var QueryParams = [String : String]()
     
     var FlightList = [FlightDetails]()
     
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var flightDetailsTableView: UITableView!
     
     override func viewDidLoad() {
@@ -24,7 +27,7 @@ class FlightDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        getApiCall()
+        getFlightDetailsApiCall()
         self.flightDetailsTableView.register(UINib.init(nibName: FLightCellNib, bundle: nil), forCellReuseIdentifier: FlightCellID)
         self.flightDetailsTableView.rowHeight = UITableView.automaticDimension
         self.flightDetailsTableView.reloadData()
@@ -43,16 +46,20 @@ class FlightDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         self.dismiss(animated: true, completion: nil)
     }
     
-    private func getApiCall() {
+    //method to GET flight details of a date.
+    private func getFlightDetailsApiCall() {
         self.view.showBlurLoader()
         NetworkCallClass.dataRequest(with: FlightAvailURL, objectType: FlightDetails.self, params: QueryParams) { (result: Result) in
             switch result {
             case .success(let object):
                 DispatchQueue.main.async {
+                    // JSON Parsing to FlightList array object
                     self.view.removeBluerLoader()
                     self.FlightList = [object]
+                    self.titleLabel.text = self.FlightList[0].trips[0].origin + " To " + self.FlightList[0].trips[0].destination
                     if self.FlightList[0].trips[0].dates[0].flights.count == 0{
-                        Utilities.showAlertControllerWith(title: "Sorry", message: "No flights between the choosen cities", onVc: self, buttons: ["Back"]) { (succes, index) in
+                        //Error alert
+                        Utilities.showAlertControllerWith(title: "Sorry", message: "No flights currently", onVc: self, buttons: ["Back"]) { (succes, index) in
                             if index == 0 {
                                 self.dismiss(animated: true, completion: nil)
                             }
@@ -63,12 +70,13 @@ class FlightDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
                 
             case .failure(let error):
                  DispatchQueue.main.async {
+                    //Error Alert
                 self.view.removeBluerLoader()
                 Utilities.showAlertControllerWith(title: "Error", message: error.localizedDescription, onVc: self, buttons: ["Cancel","Retry"]) { (succes, index) in
                     if index == 0 {
                         self.dismiss(animated: true, completion: nil)
                     }else if index == 1{
-                        self.getApiCall()
+                        self.getFlightDetailsApiCall()
                     }
                  }
                 }
@@ -85,15 +93,13 @@ class FlightDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         let cell = tableView.dequeueReusableCell(withIdentifier: FlightCellID, for: indexPath) as! flightCell
         cell.selectionStyle = .none
         cell.dateLabel.text = Utilities.convertReadableDateString( self.FlightList[0].trips[0].dates[0].flights[indexPath.row].time[0])
-        cell.fareLabel.text = String(self.FlightList[0].trips[0].dates[0].flights[indexPath.row].regularFare.fares[0].amount) + String(self.FlightList[0].currency)
-        cell.flightNumLabel.text = String(self.FlightList[0].trips[0].dates[0].flights[indexPath.row].flightNumber)
+        cell.fareLabel.text = "Price :" + String(self.FlightList[0].trips[0].dates[0].flights[indexPath.row].regularFare.fares[0].amount) + " " + String(self.FlightList[0].currency)
+        cell.flightNumLabel.text = "FL No. :" +  String(self.FlightList[0].trips[0].dates[0].flights[indexPath.row].flightNumber)
         return cell
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
-    
     
     
 

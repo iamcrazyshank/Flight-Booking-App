@@ -38,13 +38,16 @@ class SearchFlightVC: UIViewController,SearchDelegate, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.flightDatePicker.setInputViewDatePicker(target: self, selector: #selector(DoneButton))
-        // Do any additional setup after loading the view.
+        
+        //Adding picker View Delegate to each Text Field
         adultCountTextField.delegate = self
         teenCountTextField.delegate = self
         childCountTextField.delegate = self
         
+        //method to set the date picker to current date
         setCurrentDate()
         
+        //Delegating each picker view and data source
         picker1.dataSource = self
         picker1.delegate = self
         
@@ -60,6 +63,7 @@ class SearchFlightVC: UIViewController,SearchDelegate, UITextFieldDelegate {
         
     }
     
+    //Default selected values for each Text Field
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == adultCountTextField{
             self.picker1.selectRow(0, inComponent: 0, animated: true)
@@ -75,6 +79,7 @@ class SearchFlightVC: UIViewController,SearchDelegate, UITextFieldDelegate {
         }
     }
     
+    
     func setCurrentDate() {
         let currentDate = Date()
         let dateformatter = DateFormatter()
@@ -84,6 +89,7 @@ class SearchFlightVC: UIViewController,SearchDelegate, UITextFieldDelegate {
         self.dateOut = dateformatter.string(from: currentDate)
     }
     
+    //Selector method for custom date picker
     @objc func DoneButton() {
         if let datePicker = self.flightDatePicker.inputView as? UIDatePicker {
             let dateformatter = DateFormatter()
@@ -120,6 +126,7 @@ class SearchFlightVC: UIViewController,SearchDelegate, UITextFieldDelegate {
        
     }
     
+    //present Select Airport VC for origin
     @IBAction func sourceStationButtonAction(_ sender: Any) {
         DispatchQueue.main.async {
             self.sourceBool = true
@@ -131,7 +138,8 @@ class SearchFlightVC: UIViewController,SearchDelegate, UITextFieldDelegate {
             self.present(showAirportVC, animated: false, completion: nil)
         }
     }
-   
+    
+    //present Select Airport VC for dest
     @IBAction func destStationButtonAction(_ sender: Any) {
         DispatchQueue.main.async {
             self.destBool = true
@@ -147,20 +155,20 @@ class SearchFlightVC: UIViewController,SearchDelegate, UITextFieldDelegate {
     @IBAction func searchFlightsButtonAction(_ sender: Any) {
         
         if sourceStation == "" || destStation == "" {
-            
             Utilities.showAlertControllerWith(title: "Error", message: "Please choose your Source/Destination Airport", onVc: self, buttons: ["OK"]) { (succes, index) in
                 if index == 0 { 
-                    
+                   //Error for no origin and dest airport
                 }
             }
         }else if sourceStation == destStation {
             
             Utilities.showAlertControllerWith(title: "Error", message: "Please choose different Source/Destination Airport", onVc: self, buttons: ["OK"]) { (succes, index) in
                 if index == 0 {
-                    
+                    //Error for same origin and dest airport
                 }
             }
         }else{
+            //defining query param dictionary
         self.ParamsDictionary = ["origin" :  sourceStation,
                                  "destination" : destStation,
                                  "dateout" : dateOut,
@@ -185,7 +193,7 @@ class SearchFlightVC: UIViewController,SearchDelegate, UITextFieldDelegate {
 }
 
 
-
+//Picker View Delegates
 extension SearchFlightVC: UIPickerViewDataSource, UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {

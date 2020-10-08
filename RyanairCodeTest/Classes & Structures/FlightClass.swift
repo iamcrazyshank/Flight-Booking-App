@@ -8,6 +8,8 @@
 
 import Foundation
 
+//Codable Structure 'FlightDetails' to parse flight details
+
 struct FlightDetails: Codable {
     let termsOfUse: String
     let currency: String

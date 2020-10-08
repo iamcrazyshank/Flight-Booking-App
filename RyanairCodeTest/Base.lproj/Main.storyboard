@@ -29,19 +29,29 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EsH-5g-Cap">
                                         <rect key="frame" x="20.5" y="6.5" width="41.5" height="31.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="Back">
+                                        <state key="normal" title="&lt;--">
                                             <color key="titleColor" red="0.16862745100000001" green="0.2784313725" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="backButtonPressed:" destination="Oed-qx-Y9b" eventType="touchUpInside" id="7l2-6k-wue"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bub-Vj-uYs">
+                                        <rect key="frame" x="93" y="0.0" width="228" height="45"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="bub-Vj-uYs" firstAttribute="centerY" secondItem="uGg-lZ-0eP" secondAttribute="centerY" id="28j-40-RpY"/>
                                     <constraint firstItem="EsH-5g-Cap" firstAttribute="centerY" secondItem="uGg-lZ-0eP" secondAttribute="centerY" id="NQi-sP-HhN"/>
+                                    <constraint firstItem="bub-Vj-uYs" firstAttribute="centerX" secondItem="uGg-lZ-0eP" secondAttribute="centerX" id="Uh3-JC-2BX"/>
                                     <constraint firstItem="EsH-5g-Cap" firstAttribute="height" secondItem="uGg-lZ-0eP" secondAttribute="height" multiplier="0.7" id="dPx-ke-xLL"/>
                                     <constraint firstItem="EsH-5g-Cap" firstAttribute="width" secondItem="uGg-lZ-0eP" secondAttribute="width" multiplier="0.1" id="gbO-Na-0I2"/>
+                                    <constraint firstItem="bub-Vj-uYs" firstAttribute="height" secondItem="uGg-lZ-0eP" secondAttribute="height" id="n5z-F5-Wsg"/>
+                                    <constraint firstItem="bub-Vj-uYs" firstAttribute="width" secondItem="uGg-lZ-0eP" secondAttribute="width" multiplier="0.55" id="vjE-vA-iVO"/>
                                     <constraint firstItem="EsH-5g-Cap" firstAttribute="centerX" secondItem="uGg-lZ-0eP" secondAttribute="centerX" multiplier="0.2" id="xwg-93-bpl"/>
                                 </constraints>
                             </view>
@@ -75,6 +85,7 @@
                     </view>
                     <connections>
                         <outlet property="flightDetailsTableView" destination="p76-ov-Mvj" id="KDg-fG-1Yb"/>
+                        <outlet property="titleLabel" destination="bub-Vj-uYs" id="SmD-xe-R0A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pYA-AH-pUS" userLabel="First Responder" sceneMemberID="firstResponder"/>
