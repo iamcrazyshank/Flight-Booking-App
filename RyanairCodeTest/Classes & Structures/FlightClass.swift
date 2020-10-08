@@ -56,7 +56,7 @@ struct Flight: Codable {
     enum CodingKeys: String, CodingKey {
         case regularFare = "regularFare"
         case flightNumber = "flightNumber"
-        case time = "time"
+        case time = "timeUTC"
         case duration = "duration"
     }
 }
