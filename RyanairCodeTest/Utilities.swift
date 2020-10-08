@@ -28,6 +28,26 @@ class Utilities {
         onVc.present(alertController, animated: true, completion: nil)
     }
     
+    class func convertReadableDateString(_ dateString: String) -> String? {
+        
+        let serverDateFormatter = DateFormatter()
+        serverDateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        
+        guard let responseDate = serverDateFormatter.date(from: dateString) else {
+            print ("Error in response Date ")
+            return nil
+        }
+        
+        let resultFormatter = DateFormatter()
+        resultFormatter.dateFormat = "MMM dd yyyy h:mm a"
+        
+        return resultFormatter.string(from: responseDate)
+    }
+    
+    
+    
+    
+    
 }
 
 
@@ -59,6 +79,33 @@ extension UITextField {
         self.resignFirstResponder()
     }
     
+}
+
+extension UIView{
+    func showBlurLoader(){
+        DispatchQueue.main.async {
+            let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.extraLight)
+            let blurEffectView = UIVisualEffectView(effect: blurEffect)
+            blurEffectView.frame = self.bounds
+            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            let activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
+            activityIndicator.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+            activityIndicator.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+            activityIndicator.color = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+            activityIndicator.startAnimating()
+            blurEffectView.contentView.addSubview(activityIndicator)
+            activityIndicator.center = blurEffectView.contentView.center
+            self.addSubview(blurEffectView)
+        }
+    }
+    
+    func removeBluerLoader(){
+        DispatchQueue.main.async {
+            self.subviews.flatMap {  $0 as? UIVisualEffectView }.forEach {
+                $0.removeFromSuperview()
+            }
+        }
+    }
 }
 
 
