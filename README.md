@@ -19,5 +19,11 @@ present the results on a list with date, flight number and regular fare.
 
 Programming Language :
 ------------------
-Swift 5
+Language : Swift 5
 IDE : Xcode
+
+Screenshots and Functions:
+----------------------------
+
+![App Demo](https://user-images.githubusercontent.com/32428855/95523835-9f425b00-09c7-11eb-95e8-977b2b418f8b.gif)
+
