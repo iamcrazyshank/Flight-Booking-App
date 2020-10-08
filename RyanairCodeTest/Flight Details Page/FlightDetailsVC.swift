@@ -15,21 +15,28 @@ class FlightDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     var QueryParams = [String : String]()
     
-    var TripList = [Trip]()
+    var FlightList = [FlightDetails]()
     
     @IBOutlet weak var flightDetailsTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         getApiCall()
         self.flightDetailsTableView.register(UINib.init(nibName: FLightCellNib, bundle: nil), forCellReuseIdentifier: FlightCellID)
-        self.flightDetailsTableView.dataSource = self
-        self.flightDetailsTableView.delegate = self
-        
         self.flightDetailsTableView.rowHeight = UITableView.automaticDimension
-        self.flightDetailsTableView.separatorColor = #colorLiteral(red: 0.3412463963, green: 0.1215836629, blue: 0.6041584611, alpha: 1)
-        self.flightDetailsTableView.tintColor = #colorLiteral(red: 0.3412463963, green: 0.1215836629, blue: 0.6041584611, alpha: 1)
-        // Do any additional setup after loading the view.
+        self.flightDetailsTableView.reloadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.flightDetailsTableView.delegate = self
+        self.flightDetailsTableView.dataSource = self
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.FlightList.removeAll()
     }
     
     @IBAction func backButtonPressed(_ sender: Any) {
@@ -37,13 +44,26 @@ class FlightDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     private func getApiCall() {
-        
+        self.view.showBlurLoader()
         NetworkCallClass.dataRequest(with: FlightAvailURL, objectType: FlightDetails.self, params: QueryParams) { (result: Result) in
             switch result {
             case .success(let object):
-                self.TripList = object.trips
+                DispatchQueue.main.async {
+                    self.view.removeBluerLoader()
+                    self.FlightList = [object]
+                    if self.FlightList[0].trips[0].dates[0].flights.count == 0{
+                        Utilities.showAlertControllerWith(title: "Sorry", message: "No flights between the choosen cities", onVc: self, buttons: ["Back"]) { (succes, index) in
+                            if index == 0 {
+                                self.dismiss(animated: true, completion: nil)
+                            }
+                        }
+                    }
+                    self.flightDetailsTableView.reloadData()
+                }
+                
             case .failure(let error):
                  DispatchQueue.main.async {
+                self.view.removeBluerLoader()
                 Utilities.showAlertControllerWith(title: "Error", message: error.localizedDescription, onVc: self, buttons: ["Cancel","Retry"]) { (succes, index) in
                     if index == 0 {
                         self.dismiss(animated: true, completion: nil)
@@ -58,14 +78,23 @@ class FlightDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return self.FlightList[0].trips[0].dates[0].flights.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FlightCellID, for: indexPath) as! flightCell
         cell.selectionStyle = .none
+        cell.dateLabel.text = Utilities.convertReadableDateString( self.FlightList[0].trips[0].dates[0].flights[indexPath.row].time[0])
+        cell.fareLabel.text = String(self.FlightList[0].trips[0].dates[0].flights[indexPath.row].regularFare.fares[0].amount) + String(self.FlightList[0].currency)
+        cell.flightNumLabel.text = String(self.FlightList[0].trips[0].dates[0].flights[indexPath.row].flightNumber)
         return cell
     }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    
+    
     
 
 }
